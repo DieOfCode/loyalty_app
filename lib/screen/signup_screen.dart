@@ -49,8 +49,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       });
                     },
                     validator: (value) {
+                      RegExp regExp = RegExp(
+                          r"^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$");
                       if (value.isEmpty) {
                         return 'Обязатльное поле';
+                      }
+                      if (!regExp.hasMatch(value)) {
+                        return 'Неправильная форма логина';
                       }
                       return null;
                     }),
